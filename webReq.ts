@@ -1,15 +1,20 @@
 interface Todo {
   userId: number;
-  id:number;
+  id: number;
   title: string;
   completed: boolean;
 }
 
 const fetchTodos = async () => {
-  try{
+  try {
     const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+    if (!response.ok) {
+      throw new Error(`HTTP error ${response.status}`);
+    }
+    const data: Todo = await response.json();
   }
-  catch(e){
+  catch (e) {
 
   }
 }
+
